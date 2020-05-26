@@ -37,8 +37,9 @@ public class LoginController extends HttpServlet {
          
       if(login.equals("admin@gmail.com") && senha.equals("123")){
           session.setAttribute("id","123");
-          request.getRequestDispatcher("pages/Dashboard.html").forward(request, response);
+          request.getRequestDispatcher("pages/dashboard.html").forward(request, response);
       }else{
+          
           session.invalidate();
           
       }
