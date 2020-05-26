@@ -33,12 +33,11 @@ public class LoginController extends HttpServlet {
         
       String login = request.getParameter("email");
       String senha = request.getParameter("password");
-       HttpSession session = request.getSession();
+      HttpSession session = request.getSession();
          
       if(login.equals("admin@gmail.com") && senha.equals("123")){
           session.setAttribute("id","123");
           request.getRequestDispatcher("pages/Dashboard.html").forward(request, response);
-       
       }else{
           session.invalidate();
           
