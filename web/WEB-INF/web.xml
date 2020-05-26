@@ -20,6 +20,10 @@
         <servlet-name>EditarUsuarioController</servlet-name>
         <servlet-class>controller.EditarUsuarioController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.LoginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastrarUsuarioController</servlet-name>
         <url-pattern>/CadastrarUsuarioController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>EditarUsuarioController</servlet-name>
         <url-pattern>/EditarUsuarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -24,7 +24,7 @@
             
         %>
         <br><br>
-        <a href="index.html"> <button> Voltar </button> </a>
+        <a href="Dashboard.html"> <button> Voltar </button> </a>
         
         
     </body>
