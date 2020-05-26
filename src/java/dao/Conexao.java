@@ -8,12 +8,12 @@ import java.sql.SQLException;
 public class Conexao {
 
     private Connection conn;
-    private String banco = "jdbc:mysql://127.0.0.1:8889/bancobsi?useSSL=false";
+    private String banco = "postgres://kzzgfsfhurfymx:75b21f3236210f3a10bc37be9c8cbda72d493fe4d03937415ca85778a0b8206a@ec2-3-91-139-25.compute-1.amazonaws.com:5432/ddimd85appvo38";
 
     public Conexao(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(banco, "root", "root");
+            conn = DriverManager.getConnection(banco, "kzzgfsfhurfymx", "75b21f3236210f3a10bc37be9c8cbda72d493fe4d03937415ca85778a0b8206a");
         }
         catch(ClassNotFoundException ex){
              ex.printStackTrace();
