@@ -18,21 +18,19 @@ public class MenuController extends HttpServlet {
         String opcao = request.getParameter("opcao");
         
         switch(opcao.trim()){
-            case "cadastrar":
-                request.getRequestDispatcher("pages/cadastrar.html").forward(request, response);
+            case "profile":
+                request.getRequestDispatcher("pages/profile.html").forward(request, response);
                 break;
             
-            case "listar":
-                request.getServletContext().getRequestDispatcher("/ListarUsuarioController").forward(request, response);
+            case "dashboard":
+                request.getRequestDispatcher("pages/dashboard.html").forward(request, response);
                 break;
                 
-            case "editar":
-                request.getServletContext().getRequestDispatcher("/EditarUsuarioController?funcao=opcoes").forward(request, response);
+            case "table":
+                request.getRequestDispatcher("pages/table.html").forward(request, response);
                 break;
                 
-            case "deletar":
-                request.getServletContext().getRequestDispatcher("/DeletarUsuarioController?funcao=opcoes").forward(request, response);
-                break;
+            
         }
     }
 
