@@ -25,6 +25,10 @@
         <servlet-class>controller.LoginController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PedidoController</servlet-name>
+        <servlet-class>controller.PedidoController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegistraPizzaController</servlet-name>
         <servlet-class>controller.RegistraPizzaController</servlet-class>
     </servlet>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PedidoController</servlet-name>
+        <url-pattern>/PedidoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistraPizzaController</servlet-name>

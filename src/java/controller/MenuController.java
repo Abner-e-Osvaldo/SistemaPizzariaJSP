@@ -18,8 +18,8 @@ public class MenuController extends HttpServlet {
         String opcao = request.getParameter("opcao");
         
         switch(opcao.trim()){
-            case "profile":
-                request.getRequestDispatcher("pages/profile.html").forward(request, response);
+            case "pedido":
+                request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 break;
             
             case "dashboard":
@@ -29,7 +29,6 @@ public class MenuController extends HttpServlet {
             case "table":
                 request.getRequestDispatcher("pages/table.html").forward(request, response);
                 break;
-                
             
         }
     }
