@@ -13,7 +13,6 @@ public class Pizza {
     
     private String nome;
     private String descricao;
-    private String tamanho;
     private double valorBase;
     private double acrescimoTamanho;
     private int idTamanho;
@@ -21,15 +20,18 @@ public class Pizza {
     
     public Pizza() {
     }
-    
-    public Pizza(String nome, String descricao, String tamanho, double valorBase, double acrescimoTamanho, int idTamanho) {
+
+    public Pizza(String nome, String descricao, double valorBase, double acrescimoTamanho, int idTamanho) {
         this.nome = nome;
         this.descricao = descricao;
-        this.tamanho = tamanho;
         this.valorBase = valorBase;
         this.acrescimoTamanho = acrescimoTamanho;
         this.idTamanho = idTamanho;
     }
+    
+    
+
+    
 
     public String getNome() {
         return nome;
@@ -47,13 +49,6 @@ public class Pizza {
         this.descricao = descricao;
     }
 
-    public String getTamanho() {
-        return tamanho;
-    }
-
-    public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
-    }
 
     public double getValorBase() {
         return valorBase;

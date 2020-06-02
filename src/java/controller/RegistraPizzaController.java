@@ -5,12 +5,14 @@
  */
 package controller;
 
+import dao.PizzaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Pizza;
 
 /**
  *
@@ -32,11 +34,19 @@ public class RegistraPizzaController extends HttpServlet {
             throws ServletException, IOException {
         String  nomePizza = request.getParameter("nomePizza").toString().trim();
         String  descricaoPizza = request.getParameter("descricaoPizza").toString().trim();
-        String  tamanhoPizza = request.getParameter("tamanhoPizza").toString().trim();
+        int  tamanhoPizza = Integer.parseInt(request.getParameter("tamanhoPizza").toString().trim());
         double  valorPizza = Integer.parseInt(request.getParameter("valorPizza").toString().trim()); 
         double  acrescimoPizza = Integer.parseInt(request.getParameter("acrescimoPizza").toString().trim());
         
-           request.getRequestDispatcher("pages/table.html").forward(request, response);
+        
+        Pizza pizza = new Pizza(nomePizza,descricaoPizza,valorPizza,acrescimoPizza,tamanhoPizza);
+        
+        PizzaDao pizzadao = new PizzaDao();
+        pizzadao.InsertPizza(pizza);
+           
+        
+        
+         request.getRequestDispatcher("pages/table.html").forward(request, response);
         
     }
 
