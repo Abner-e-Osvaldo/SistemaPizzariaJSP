@@ -11,15 +11,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author abner
  */
-public class LoginController extends HttpServlet {
+public class RegistraPizzaController extends HttpServlet {
 
+    
 
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,23 +30,15 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        String  nomePizza = request.getParameter("nomePizza").toString().trim();
+        String  descricaoPizza = request.getParameter("descricaoPizza").toString().trim();
+        String  tamanhoPizza = request.getParameter("tamanhoPizza").toString().trim();
+        double  valorPizza = Integer.parseInt(request.getParameter("valorPizza").toString().trim()); 
+        double  acrescimoPizza = Integer.parseInt(request.getParameter("acrescimoPizza").toString().trim());
         
-      String login = request.getParameter("email");
-      String senha = request.getParameter("password");
-      HttpSession session = request.getSession();
-      
-      System.out.print("aa");
-         
-      if(login.equals("admin@gmail.com") && senha.equals("123")){
-          session.setAttribute("id","123");
-          request.getRequestDispatcher("pages/dashboard.html").forward(request, response);
-      }else{
-          
-          session.invalidate();
-          
-      }
+           request.getRequestDispatcher("pages/table.html").forward(request, response);
+        
     }
 
-   
+
 }

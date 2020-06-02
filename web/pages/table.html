@@ -150,8 +150,77 @@
                     </ul>
             </div>
             </nav>
+                
+                <!-- MODAL PIZZA  -->
+                
+               
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabe1">Registrando pizza</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="RegistraPizzaController">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"  >Nome pizza: </label>
+            <input type="text" class="form-control" id="recipient-name" name="nomePizza">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Descrição</label>
+            <textarea class="form-control" id="message-text" name="descricaoPizza"></textarea>
+          </div>
+            <div class="form-group">
+                
+                
+                <div class="row">
+                <div class="col-6">  <label for="recipient-name" class="col-form-label" >Tamanho base: </label> </div>
+                <div class="col-6">  <select class="form-control" id="exampleFormControlSelect1" name="tamanhoPizza">
+                            <option>BROTO</option>
+                            <option>PEQUENA</option>
+                            <option>MÉDIA</option>
+                            <option>GRANDE</option>
+                            <option>BIG</option>
+                          </select>  
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                <div class="col-6">  <label for="recipient-name" class="col-form-label">Valor base: </label> </div>
+                <div class="col-6"> <input type="number" name="valorPizza" min="0.00" max="10000.00" step="0.01" class="form-control" id="recipient-name" placeholder="R$" >  </div>
+                </div>
+                <br>
+                 <div class="row">                        
+                <div class="col-6">  <label for="recipient-name" class="col-form-label">Acréscimo por tamanho: </label> </div>
+                <div class="col-6"> <input type="number" name="acrescimoPizza" min="0.00" max="10000.00" step="0.01" class="form-control" id="recipient-name" placeholder="R$" >  </div>
+                </div>
+            
+          </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Fechar</button>
+        <input type="submit" class="btn btn-info" value="Registrar">
+      </div>
+         
+</form>
+          
+    </div>
+  </div>
+</div>
+
+<!-- FIM MODAL PIZZA-->
+
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Team</h3>
+                <div class="d-flex justify-content-between">  
+                <h3 class="text-dark mb-4">Pizza</h3>
+                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" >+ Registra pizza</button>
+
+                </div>
+                <br>
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Employee Info</p>
@@ -303,6 +372,8 @@
     <script src="pages/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="pages/assets/js/theme.js"></script>
+      <script src="pages/assets/js/RegisterPizza.js"></script>
+    
 </body>
 
 </html>
