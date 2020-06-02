@@ -16,7 +16,7 @@
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-pizza-slice"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Pizza MÃ¡gica</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>Pizza Mágica</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 
@@ -130,7 +130,7 @@
                                             </div>
                                             <div class="font-weight-bold">
                                                 <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog Â· 2w</p>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
                                             </div>
                                         </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
                                 </div>
@@ -190,21 +190,21 @@
                                         <p class="text-primary m-0 font-weight-bold">Pedido</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form id="formpedido" method="POST" action="PedidoController?opcao=inserir">
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="cod-cliente"></div>
+                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="codCliente"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Tamanho</strong></label><input class="form-control" type="email" placeholder="Ex: Grande" name="email"></div>
+                                                    <div class="form-group"><label for="email"><strong>Tamanho</strong></label><input class="form-control" type="text" placeholder="Ex: Grande" name="tamanho"></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Quantidade sabores</strong></label><input class="form-control" type="text" placeholder="Ex: 3" name="first_name"></div>
+                                                    <div class="form-group"><label for="first_name"><strong>Quantidade sabores</strong></label><input class="form-control" type="number" placeholder="Ex: 3" name="qtdeSabores"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Sabores</strong></label><input class="form-control" type="text" placeholder="Doe" name="last_name"></div>
+                                                    <div class="form-group"><label for="last_name"><strong>Sabores</strong></label><input class="form-control" type="text" placeholder="Doe" name="sabores"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Realizar pedido</button></div>
@@ -237,7 +237,7 @@
         </div>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright Â© Brand 2020</span></div>
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>

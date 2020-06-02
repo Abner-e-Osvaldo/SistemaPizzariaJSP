@@ -24,6 +24,10 @@
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.LoginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PedidoController</servlet-name>
+        <servlet-class>controller.PedidoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastrarUsuarioController</servlet-name>
         <url-pattern>/CadastrarUsuarioController</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PedidoController</servlet-name>
+        <url-pattern>/PedidoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
