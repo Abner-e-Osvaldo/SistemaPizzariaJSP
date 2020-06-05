@@ -29,8 +29,12 @@ public class PizzaDao {
    public void InsertPizza(Pizza pizza){
        
        try{
-       query = "INSERT INTO pizza( id_tamanho,nome,descricao,tamanho,valor,acrescimo_tamanho)VALUE("+pizza.getIdTamanho()+",'"+pizza.getNome()+"' , "+" '"+pizza.getDescricao()+"',"+pizza.getValorBase()+","+pizza.getAcrescimoTamanho()+")";
+       query ="INSERT INTO pizza (id_tamanho, nome, descricao, valor, acrescimo_tamanho) VALUES"
+            + "("+pizza.getIdTamanho()+",'"+pizza.getNome()+"','"+pizza.getDescricao()+"',"+pizza.getValorBase()+","+pizza.getAcrescimoTamanho()+");";
        
+       
+
+    
        statement = conexao.getConnection().prepareStatement(query);
        statement.executeUpdate();
        }catch(SQLException e){

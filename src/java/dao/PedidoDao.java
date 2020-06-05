@@ -8,7 +8,7 @@ import model.Pedido;
 
 public class PedidoDao {
     
-    private Conexao conexao;
+    private Conexao conexao =  new Conexao();
     private String query;
     private PreparedStatement statement;
     private ResultSet resultSet;
