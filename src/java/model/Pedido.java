@@ -3,43 +3,68 @@ package model;
 
 public class Pedido {
     
-    String codCliente;
-    String tamanho;
-    int qtdeSabores;
-    String sabores;
+    int idPedido;
+    int idCliente;
+    int pizza;
+    int tamanho;
+    String observacao;
+    double total;
+    int status;
 
-    public String getCodCliente() {
-        return codCliente;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setCodCliente(String codCliente) {
-        this.codCliente = codCliente;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public String getTamanho() {
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(int pizza) {
+        this.pizza = pizza;
+    }
+
+    public int getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(String tamanho) {
+    public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
     }
 
-    public int getQtdeSabores() {
-        return qtdeSabores;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setQtdeSabores(int qtdeSabores) {
-        this.qtdeSabores = qtdeSabores;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public String getSabores() {
-        return sabores;
+    public double getTotal() {
+        return total;
     }
 
-    public void setSabores(String sabores) {
-        this.sabores = sabores;
+    public void setTotal(double total) {
+        this.total = total;
     }
-    
-    
-    
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }
