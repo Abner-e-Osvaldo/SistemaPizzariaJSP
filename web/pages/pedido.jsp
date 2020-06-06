@@ -1,3 +1,8 @@
+<%@page import="controller.PedidoController"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Pedido"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html>
 
@@ -23,12 +28,11 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     
                     <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
-                        
                         <li class="nav-item" role="presentation">
                             <a class="nav-link " href="#" onClick="document.getElementById('formdashboard').submit();">
-                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                            </a>
                         </li>
-                    
                     </form>
                      <form id="formtable" method="POST" action="MenuController?opcao=table" >
                         <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-table"></i><span>Table</span></a></li>
@@ -193,21 +197,53 @@
                                         <form id="formpedido" method="POST" action="PedidoController?opcao=inserir">
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="codCliente"></div>
+                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="idCliente"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Tamanho</strong></label><input class="form-control" type="text" placeholder="Ex: Grande" name="tamanho"></div>
+                                                    <div class="form-group">
+                                                        <label for="status"><strong>Status</strong></label>
+                                                        <select class="form-control" name="status">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="1">EM ATENDIMENTO</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Quantidade sabores</strong></label><input class="form-control" type="number" placeholder="Ex: 3" name="qtdeSabores"></div>
+                                                    <div class="form-group">
+                                                        <label for="pizza"><strong>Pizza</strong></label>
+                                                        <select class="form-control" name="pizza">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="34">Pepperoni</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Sabores</strong></label><input class="form-control" type="text" placeholder="Doe" name="sabores"></div>
+                                                    <div class="form-group">
+                                                        <label for="tamanho"><strong>Tamanho</strong></label>
+                                                        <select class="form-control" name="tamanho">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="2">GRANDE</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Realizar pedido</button></div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="observacao"><strong>Observação</strong></label>
+                                                        <input class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="last_name"><strong>Total</strong></label>
+                                                        <input value="293" readonly="true" class="form-control" type="text" placeholder="R$" name="total">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Fazer pedido</button></div>
                                         </form>
                                     </div>
                                 </div>
@@ -215,20 +251,75 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow mb-5">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Listar Pedidos</p>
+                <div class="card shadow">
+                    <div class="card-header py-3 bg-info">
+                        <p class="text-white m-0 font-weight-bold">Listar pedidos</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                            </div>
                             <div class="col-md-6">
-                                <form>
-                                    <div class="form-group"><label for="signature"><strong>Signature</strong><br></label><textarea class="form-control" rows="4" name="signature"></textarea></div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-switch"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1"><strong>Notify me about new replies</strong></label></div>
-                                    </div>
-                                    <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-                                </form>
+                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Status</th>
+                                        <th>Pizza</th>
+                                        <th>Tamanho</th>
+                                        <th>Observacao</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
+                                        PedidoController pedidoController = new PedidoController();
+                                        ArrayList<Pedido> listaPedido = pedidoController.listar();
+                                        for (Pedido pedido : listaPedido) { %>
+                                    <tr>
+                                        <td><% out.print(pedido.getIdPedido()); %></td>
+                                        <td><% out.print(pedido.getIdCliente()); %></td>
+                                        <td><% out.print(pedido.getStatus()); %></td>
+                                        <td><% out.print(pedido.getPizza()); %></td>
+                                        <td><% out.print(pedido.getTamanho()); %></td>
+                                        <td><% out.print(pedido.getObservacao()); %></td>
+                                        <td><% out.print(pedido.getTotal()); %></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Status</th>
+                                        <th>Pizza</th>
+                                        <th>Tamanho</th>
+                                        <th>Observacao</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>

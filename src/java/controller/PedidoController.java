@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Pedido;
 import dao.PedidoDao;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class PedidoController extends HttpServlet {
 
@@ -17,27 +19,36 @@ public class PedidoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String opcao = request.getParameter("opcao");
-        
-        Pedido pedido = new Pedido();
-        String cliente = request.getParameter("codCliente");
+        String idCliente = request.getParameter("idCliente");
+        String status = request.getParameter("status");
+        String pizza = request.getParameter("pizza");
         String tamanho = request.getParameter("tamanho");
-        String sabores = request.getParameter("sabores");
-        int qtdeSabores = Integer.parseInt(request.getParameter("qtdeSabores"));
+        String observacao = request.getParameter("observacao");
+        String total = request.getParameter("total");
         
-        pedido.setTamanho(tamanho);
-        pedido.setSabores(sabores);
-        pedido.setCodCliente(cliente);
-        pedido.setQtdeSabores(qtdeSabores);
-        
+        String opcao = request.getParameter("opcao");
         switch(opcao.trim()){
-            case "inserir":                
+            case "inserir":   
+                
+                Pedido pedido = new Pedido();
+                pedido.setIdCliente(Integer.parseInt(idCliente));
+                pedido.setStatus(Integer.parseInt(status));
+                pedido.setPizza(Integer.parseInt(pizza));
+                pedido.setTamanho(Integer.parseInt(tamanho));
+                pedido.setObservacao(observacao);
+                pedido.setTotal(Double.parseDouble(total));
+                
+                if(!validarPedido(pedido))
+                    return;
+                
                 inserir(pedido);
+                request.setAttribute("listaPedido", listar());
                 request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
+                
                 break;
                 
             case "listar":
-                listar();
+                request.setAttribute("listaPedido", listar());
                 request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 break;
         }
@@ -54,9 +65,21 @@ public class PedidoController extends HttpServlet {
         pedidoDao.encerrar(id);
     }
     
-    public void listar() {
+    public ArrayList<Pedido> listar() {
         PedidoDao pedidoDao = new PedidoDao();
-        pedidoDao.listar();
+        ArrayList<Pedido> listaPedido = pedidoDao.listar();
+        return listaPedido;
+    }
+    
+    public boolean validarPedido(Pedido pedido) {
+        
+        boolean validaPedido = true;
+        
+        if(pedido.getIdCliente() == 0) {
+            validaPedido = false;
+        }
+        
+        return validaPedido;
     }
     
 }
