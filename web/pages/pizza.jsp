@@ -40,15 +40,16 @@
                     
                     </form>
                     
+                    <form id="formprofile" method="POST" action="MenuController?opcao=pedido">
+                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formprofile').submit();" ><i class="fas fa-caravan"></i><span>Pedidos</span></a></li>
+                    </form>
+                    
                      <form id="formtable" method="POST" action="MenuController?opcao=table" >
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-table"></i><span>Table</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
                     </form>
                     
-                    <form id="formprofile" method="POST" action="MenuController?opcao=profile">
-                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formprofile').submit();" ><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    </form>
+                    
                    
-                    
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -333,12 +334,13 @@
                                      while(rs.next()){
                                         out.print( "<tr value='"+rs.getString("id_pizza")+"'> <td value='"+rs.getString("nome")+"'>"+rs.getString("nome")+"</td>");
                                         out.print("<td value='"+rs.getString("descricao")+"'>"+rs.getString("descricao")+"</td>");
-                                        out.print("<td>"+rs.getString("tamanho")+"</td>");
+                                        out.print("<td value='"+rs.getString("id_tamanho")+"' >" +rs.getString("tamanho")+"</td>");
                                         out.print("<td value='"+rs.getString("valor")+"' >"+rs.getString("valor")+"</td>");
                                         out.print("<td value='"+rs.getString("acrescimo_tamanho")+"'>"+rs.getString("acrescimo_tamanho")+"</td> ");
                                         out.print("<td> <i class=' btn button-edit fas fa-edit text-info' data-toggle='modal' data-target='#exampleModal2' ></i></td> </tr>");
                                                  
                                      }
+                                     
                                  %>
                                     
                                   <!--  FIM LISTANDO PIZZA -->

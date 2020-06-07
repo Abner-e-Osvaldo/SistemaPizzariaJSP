@@ -19,7 +19,7 @@ $(document).ready(function(){
   const idPizza = button[0].parentElement.parentElement.getAttribute('value');
   const nome = button[0].parentElement.parentElement.querySelectorAll('td')[0].innerText;
   const descricao = button[0].parentElement.parentElement.querySelectorAll('td')[1].innerText; 
-  const tamanho = button[0].parentElement.parentElement.querySelectorAll('td')[2].innerText;
+  const tamanho = button[0].parentElement.parentElement.querySelectorAll('td')[2].getAttribute('value');
   const valorBase = button[0].parentElement.parentElement.querySelectorAll('td')[3].innerText;
   const acrescimoTamanho = button[0].parentElement.parentElement.querySelectorAll('td')[4].innerText;
   
@@ -34,6 +34,7 @@ $(document).ready(function(){
   $("[name=descricaoPizzaEdit]").val(descricao);
   $("[name=valorPizzaEdit]").val(valorBase);
   $("[name=acrescimoPizzaEdit]").val(acrescimoTamanho);
+  $("[name=tamanhoPizzaEdit]").val(tamanho);
   $("[name=idPizza]").val(idPizza);
 
   
