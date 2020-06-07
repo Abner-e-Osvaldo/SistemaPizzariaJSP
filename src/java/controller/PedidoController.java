@@ -97,4 +97,88 @@ public class PedidoController extends HttpServlet {
         return validaPedido;
     }
     
+    
+    public Double lucroTotal() {
+        Pedido pedido = new Pedido();
+        int statusConcluido = 3;
+        pedido.setStatus(statusConcluido);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        double lucroTotal = 0;
+        for(Pedido ped : listaPedido) {
+            lucroTotal += ped.getTotal();
+        }
+        
+        return lucroTotal;
+    }
+    
+    public int realizadosComSucesso() {
+        Pedido pedido = new Pedido();
+        int statusConcluido = 3;
+        pedido.setStatus(statusConcluido);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        return listaPedido.size();
+    }
+    
+    
+    public Double lucroEstimado() {
+        Pedido pedido = new Pedido();
+        int statusEmAndamento = 1;
+        pedido.setStatus(statusEmAndamento);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        double lucroEstimado = 0;
+        for(Pedido ped : listaPedido) {
+            lucroEstimado += ped.getTotal();
+        }
+        
+        return lucroEstimado;
+    }
+    
+    public int emAndamento() {
+        Pedido pedido = new Pedido();
+        int statusEmAndamento = 1;
+        pedido.setStatus(statusEmAndamento);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        return listaPedido.size();
+    }
+    
+    
+    public Double prejuizoTotal() {
+        Pedido pedido = new Pedido();
+        int statusCancelado = 2;
+        pedido.setStatus(statusCancelado);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        double prejuizoTotal = 0;
+        for(Pedido ped : listaPedido) {
+            prejuizoTotal += ped.getTotal();
+        }
+        
+        return prejuizoTotal;
+    }
+    
+     public int cancelados() {
+        Pedido pedido = new Pedido();
+        int statusCancelado = 2;
+        pedido.setStatus(statusCancelado);
+        
+        PedidoDao pedidoDao = new PedidoDao();
+        ArrayList<Pedido> listaPedido = pedidoDao.listarQuery(pedido);
+        
+        return listaPedido.size();
+    }
+    
 }
