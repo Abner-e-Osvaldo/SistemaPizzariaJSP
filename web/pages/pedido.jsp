@@ -28,17 +28,20 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     
                     <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
+                        
                         <li class="nav-item" role="presentation">
                             <a class="nav-link " href="#" onClick="document.getElementById('formdashboard').submit();">
-                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
-                            </a>
+                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
                         </li>
+                    
                     </form>
+                    
+                    <form id="formprofile" method="POST" action="MenuController?opcao=pedido">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" onClick="document.getElementById('formprofile').submit();" ><i class="fas fa-caravan"></i><span>Pedidos</span></a></li>
+                    </form>
+                    
                      <form id="formtable" method="POST" action="MenuController?opcao=table" >
-                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-table"></i><span>Table</span></a></li>
-                    </form>
-                    <form id="formprofile" method="POST" action="MenuController?opcao=profile">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" onClick="document.getElementById('formprofile').submit();" ><i class="fas fa-user"></i><span>Profile</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
                     </form>
                    
                     
@@ -315,7 +318,7 @@
                                         <td name="observacao-list" value="<% out.print(pedido.getObservacao()); %>"><% out.print(pedido.getObservacao()); %></td>
                                         <td name="total-list" value="<% out.print(pedido.getTotal()); %>"><% out.print(pedido.getTotal()); %></td>
                                         <th>
-                                            <button class="btn btn-primary btn-sm" title="Editar" onclick="javascript: pedido.editar(this)"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm" title="Editar" onclick="javascript: pedido.editar(this)"><i class="fas fa-edit text-info"></i></button>
                                         </th>
                                     </tr>
                                     <% } %>

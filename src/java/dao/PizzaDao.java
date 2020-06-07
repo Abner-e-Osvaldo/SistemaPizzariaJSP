@@ -44,13 +44,14 @@ public class PizzaDao {
    
    public ResultSet ListarPizza(){
        query = "SELECT	id_pizza"
-                   + ",nome"
+                   + ", nome"
                    +" , tamanho"
-                   +", descricao"
-                   +", valor"
-                   +", acrescimo_tamanho "
-               +"FROM pizza"
-                  +", tamanho "
+                   +",  descricao"
+                   +",  valor"
+                   +",  acrescimo_tamanho "
+                   +",  pizza.id_tamanho "
+               +"FROM  pizza"
+                  +",  tamanho "
                +"where tamanho.id_tamanho = pizza.id_tamanho"
                + " ORDER BY"
                + " nome ASC;";

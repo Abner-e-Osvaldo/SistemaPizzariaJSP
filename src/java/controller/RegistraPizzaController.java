@@ -23,8 +23,6 @@ public class RegistraPizzaController extends HttpServlet {
     PizzaDao pizzadao;
     ResultSet rs;
     
-
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
