@@ -292,6 +292,32 @@
 
 <!-- FIM MODAL PIZZA EDITAR-->
 
+
+<!--  MODAL DELETAR CONFIRMACAO-->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-light" id="exampleModalLabel">Excluir</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+         <form method="POST" action="RegistraPizzaController?opcao=delete">
+      <div class="modal-body ">
+          <h5 class="msg-delete text-dark"></h5>
+           <input id="idPizzaDelete" name="idPizzaDelete" class="form-control" type="text" style="visibility: hidden; position: fixed">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>        
+        <input type="submit" class="btn btn-danger" value="Sim">
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+<!-- -->
+
             <div class="container-fluid">
                 <div class="d-flex justify-content-between">  
                 <h3 class="text-dark mb-4">Pizza</h3>
@@ -337,8 +363,7 @@
                                         out.print("<td value='"+rs.getString("id_tamanho")+"' >" +rs.getString("tamanho")+"</td>");
                                         out.print("<td value='"+rs.getString("valor")+"' >"+rs.getString("valor")+"</td>");
                                         out.print("<td value='"+rs.getString("acrescimo_tamanho")+"'>"+rs.getString("acrescimo_tamanho")+"</td> ");
-                                        out.print("<td> <i class=' btn button-edit fas fa-edit text-info' data-toggle='modal' data-target='#exampleModal2' ></i></td> </tr>");
-                                                 
+                                        out.print("<td> <i class=' btn button-edit fas fa-edit text-info' data-toggle='modal' data-target='#exampleModal2' ></i>  <i class='btn fas fa-trash text-info' data-toggle='modal' data-target='#exampleModal3'></i></td> </tr>");                             
                                      }
                                      
                                  %>
