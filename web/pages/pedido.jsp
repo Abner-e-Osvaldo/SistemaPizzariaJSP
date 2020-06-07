@@ -1,3 +1,8 @@
+<%@page import="controller.PedidoController"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Pedido"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html>
 
@@ -16,19 +21,18 @@
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-pizza-slice"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Pizza MÃ¡gica</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>Pizza Mágica</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     
                     <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
-                        
                         <li class="nav-item" role="presentation">
                             <a class="nav-link " href="#" onClick="document.getElementById('formdashboard').submit();">
-                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                                <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                            </a>
                         </li>
-                    
                     </form>
                      <form id="formtable" method="POST" action="MenuController?opcao=table" >
                         <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-table"></i><span>Table</span></a></li>
@@ -130,7 +134,7 @@
                                             </div>
                                             <div class="font-weight-bold">
                                                 <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog Â· 2w</p>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
                                             </div>
                                         </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
                                 </div>
@@ -190,24 +194,79 @@
                                         <p class="text-primary m-0 font-weight-bold">Pedido</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form id="formpedido" method="POST" action="">
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="cod-cliente"></div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="username">
+                                                            <input id="idPedido" name="idPedido" class="form-control" type="text" style="visibility: hidden; position: fixed">
+                                                            <strong>Cod. Cliente</strong>
+                                                        </label>
+                                                        <input id="idCliente" class="form-control" type="text" placeholder="(99) 9999-9999" name="idCliente">
+                                                    </div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Tamanho</strong></label><input class="form-control" type="email" placeholder="Ex: Grande" name="email"></div>
+                                                    <div class="form-group">
+                                                        <label for="status"><strong>Status</strong></label>
+                                                        <select id="status" class="form-control" name="status">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="1">EM ATENDIMENTO</option>
+                                                            <option value="2">CANCELADO</option>
+                                                            <option value="3">COMPLETO</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Quantidade sabores</strong></label><input class="form-control" type="text" placeholder="Ex: 3" name="first_name"></div>
+                                                    <div class="form-group">
+                                                        <label for="pizza"><strong>Pizza</strong></label>
+                                                        <select id="pizza" class="form-control" name="pizza">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="1">FRANGO</option>
+                                                            <option value="2">CALABRESA</option>
+                                                            <option value="3">CAMPONESA</option>
+                                                            <option value="4">MILHO VERDE</option>
+                                                            <option value="5">MORANGO COM CHOCOLATE</option>
+                                                            <option value="6">BANANA NEVADA</option>
+                                                            <option value="7">CHOCOLATE</option>
+                                                            <option value="8">CHOCOLATE SEM PIMENTA</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Sabores</strong></label><input class="form-control" type="text" placeholder="Doe" name="last_name"></div>
+                                                    <div class="form-group">
+                                                        <label for="tamanho"><strong>Tamanho</strong></label>
+                                                        <select id="tamanho" class="form-control" name="tamanho">
+                                                            <option value="">--SELECIONE--</option>
+                                                            <option value="5">BIG</option>
+                                                            <option value="4">GRANDE</option>
+                                                            <option value="3">MÉDIA</option>
+                                                            <option value="2">PEQUENA</option>
+                                                            <option value="1">BROTO</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Realizar pedido</button></div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="observacao"><strong>Observação</strong></label>
+                                                        <input id="observacao" class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="last_name"><strong>Total</strong></label>
+                                                        <input id="total" value="0.00" readonly="true" class="form-control" type="text" placeholder="R$" name="total">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn btn-success btn-sm" id="btn-inserir">Fazer pedido</div>
+                                                <div class="btn btn-warning btn-sm" id="btn-atualizar">Atualizar pedido</div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -215,20 +274,80 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow mb-5">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Listar Pedidos</p>
+                <div class="card shadow">
+                    <div class="card-header py-3 bg-info">
+                        <p class="text-white m-0 font-weight-bold">Listar pedidos</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                            </div>
                             <div class="col-md-6">
-                                <form>
-                                    <div class="form-group"><label for="signature"><strong>Signature</strong><br></label><textarea class="form-control" rows="4" name="signature"></textarea></div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-switch"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1"><strong>Notify me about new replies</strong></label></div>
-                                    </div>
-                                    <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-                                </form>
+                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Status</th>
+                                        <th>Pizza</th>
+                                        <th>Tamanho</th>
+                                        <th>Observacao</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
+                                        PedidoController pedidoController = new PedidoController();
+                                        ArrayList<Pedido> listaPedido = pedidoController.listar();
+                                        for (Pedido pedido : listaPedido) { %>
+                                    <tr>
+                                        <td name="idPedido-list" value="<% out.print(pedido.getIdPedido()); %>"><% out.print(pedido.getIdPedido()); %></td>
+                                        <td name="idCliente-list" value="<% out.print(pedido.getIdCliente()); %>"><% out.print(pedido.getIdCliente()); %></td>
+                                        <td name="status-list" value="<% out.print(pedido.getStatus()); %>"><% out.print(pedido.getStatusTexto()); %></td>
+                                        <td name="pizza-list" value="<% out.print(pedido.getPizza()); %>"><% out.print(pedido.getPizzaTexto()); %></td>
+                                        <td name="tamanho-list" value="<% out.print(pedido.getTamanho()); %>"><% out.print(pedido.getTamanhoTexto()); %></td>
+                                        <td name="observacao-list" value="<% out.print(pedido.getObservacao()); %>"><% out.print(pedido.getObservacao()); %></td>
+                                        <td name="total-list" value="<% out.print(pedido.getTotal()); %>"><% out.print(pedido.getTotal()); %></td>
+                                        <th>
+                                            <button class="btn btn-primary btn-sm" title="Editar" onclick="javascript: pedido.editar(this)"><i class="fas fa-edit"></i></button>
+                                        </th>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Status</th>
+                                        <th>Pizza</th>
+                                        <th>Tamanho</th>
+                                        <th>Observacao</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -237,7 +356,7 @@
         </div>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright Â© Brand 2020</span></div>
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
         </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
@@ -247,6 +366,7 @@
     <script src="pages/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="pages/assets/js/theme.js"></script>
+    <script src="pages/assets/js/pedido.js" type="text/javascript"></script>
 </body>
 
 </html>
