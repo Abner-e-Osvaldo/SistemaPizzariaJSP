@@ -19,6 +19,7 @@ public class PedidoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String idPedido = request.getParameter("idPedido");
         String idCliente = request.getParameter("idCliente");
         String status = request.getParameter("status");
         String pizza = request.getParameter("pizza");
@@ -26,18 +27,19 @@ public class PedidoController extends HttpServlet {
         String observacao = request.getParameter("observacao");
         String total = request.getParameter("total");
         
+        Pedido pedido = new Pedido();
+        pedido.setIdPedido(Integer.parseInt(idPedido));
+        pedido.setIdCliente(Integer.parseInt(idCliente));
+        pedido.setStatus(Integer.parseInt(status));
+        pedido.setPizza(Integer.parseInt(pizza));
+        pedido.setTamanho(Integer.parseInt(tamanho));
+        pedido.setObservacao(observacao);
+        pedido.setTotal(Double.parseDouble(total));
+        
         String opcao = request.getParameter("opcao");
         switch(opcao.trim()){
             case "inserir":   
-                
-                Pedido pedido = new Pedido();
-                pedido.setIdCliente(Integer.parseInt(idCliente));
-                pedido.setStatus(Integer.parseInt(status));
-                pedido.setPizza(Integer.parseInt(pizza));
-                pedido.setTamanho(Integer.parseInt(tamanho));
-                pedido.setObservacao(observacao);
-                pedido.setTotal(Double.parseDouble(total));
-                
+
                 if(!validarPedido(pedido))
                     return;
                 
@@ -45,6 +47,12 @@ public class PedidoController extends HttpServlet {
                 request.setAttribute("listaPedido", listar());
                 request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 
+                break;
+                
+            case "alterar":
+                alterar(pedido);
+                request.setAttribute("listaPedido", listar());
+                request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 break;
                 
             case "listar":
@@ -58,6 +66,11 @@ public class PedidoController extends HttpServlet {
     public void inserir(Pedido pedido) {
         PedidoDao pedidoDao = new PedidoDao();
         pedidoDao.inserir(pedido);
+    }
+    
+    public void alterar(Pedido pedido) {
+        PedidoDao pedidoDao = new PedidoDao();
+        pedidoDao.alterar(pedido.getIdPedido(), pedido);
     }
     
     public void encerrar(int id) {

@@ -194,17 +194,26 @@
                                         <p class="text-primary m-0 font-weight-bold">Pedido</p>
                                     </div>
                                     <div class="card-body">
-                                        <form id="formpedido" method="POST" action="PedidoController?opcao=inserir">
+                                        <form id="formpedido" method="POST" action="">
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Cod. Cliente</strong></label><input class="form-control" type="text" placeholder="(99) 9999-9999" name="idCliente"></div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="username">
+                                                            <input id="idPedido" name="idPedido" class="form-control" type="text" style="visibility: hidden; position: fixed">
+                                                            <strong>Cod. Cliente</strong>
+                                                        </label>
+                                                        <input id="idCliente" class="form-control" type="text" placeholder="(99) 9999-9999" name="idCliente">
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="status"><strong>Status</strong></label>
-                                                        <select class="form-control" name="status">
+                                                        <select id="status" class="form-control" name="status">
                                                             <option value="">--SELECIONE--</option>
                                                             <option value="1">EM ATENDIMENTO</option>
+                                                            <option value="2">CANCELADO</option>
+                                                            <option value="3">COMPLETO</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -213,7 +222,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="pizza"><strong>Pizza</strong></label>
-                                                        <select class="form-control" name="pizza">
+                                                        <select id="pizza" class="form-control" name="pizza">
                                                             <option value="">--SELECIONE--</option>
                                                             <option value="34">Pepperoni</option>
                                                         </select>
@@ -222,9 +231,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tamanho"><strong>Tamanho</strong></label>
-                                                        <select class="form-control" name="tamanho">
+                                                        <select id="tamanho" class="form-control" name="tamanho">
                                                             <option value="">--SELECIONE--</option>
+                                                            <option value="1">BIG</option>
                                                             <option value="2">GRANDE</option>
+                                                            <option value="3">MÉDIA</option>
+                                                            <option value="4">PEQUENA</option>
+                                                            <option value="5">BROTO</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -233,17 +246,20 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="observacao"><strong>Observação</strong></label>
-                                                        <input class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao">
+                                                        <input id="observacao" class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="last_name"><strong>Total</strong></label>
-                                                        <input value="293" readonly="true" class="form-control" type="text" placeholder="R$" name="total">
+                                                        <input id="total" value="0.00" readonly="true" class="form-control" type="text" placeholder="R$" name="total">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Fazer pedido</button></div>
+                                            <div class="form-group">
+                                                <div class="btn btn-success btn-sm" id="btn-inserir">Fazer pedido</div>
+                                                <div class="btn btn-warning btn-sm" id="btn-atualizar">Atualizar pedido</div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -275,6 +291,7 @@
                                         <th>Tamanho</th>
                                         <th>Observacao</th>
                                         <th>Total</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -283,13 +300,16 @@
                                         ArrayList<Pedido> listaPedido = pedidoController.listar();
                                         for (Pedido pedido : listaPedido) { %>
                                     <tr>
-                                        <td><% out.print(pedido.getIdPedido()); %></td>
-                                        <td><% out.print(pedido.getIdCliente()); %></td>
-                                        <td><% out.print(pedido.getStatus()); %></td>
-                                        <td><% out.print(pedido.getPizza()); %></td>
-                                        <td><% out.print(pedido.getTamanho()); %></td>
-                                        <td><% out.print(pedido.getObservacao()); %></td>
-                                        <td><% out.print(pedido.getTotal()); %></td>
+                                        <td name="idPedido-list" value="<% out.print(pedido.getIdPedido()); %>"><% out.print(pedido.getIdPedido()); %></td>
+                                        <td name="idCliente-list" value="<% out.print(pedido.getIdCliente()); %>"><% out.print(pedido.getIdCliente()); %></td>
+                                        <td name="status-list" value="<% out.print(pedido.getStatus()); %>"><% out.print(pedido.getStatus()); %></td>
+                                        <td name="pizza-list" value="<% out.print(pedido.getPizza()); %>"><% out.print(pedido.getPizza()); %></td>
+                                        <td name="tamanho-list" value="<% out.print(pedido.getTamanho()); %>"><% out.print(pedido.getTamanho()); %></td>
+                                        <td name="observacao-list" value="<% out.print(pedido.getObservacao()); %>"><% out.print(pedido.getObservacao()); %></td>
+                                        <td name="total-list" value="<% out.print(pedido.getTotal()); %>"><% out.print(pedido.getTotal()); %></td>
+                                        <th>
+                                            <button class="btn btn-primary btn-sm" title="Editar" onclick="javascript: pedido.editar(this)"><i class="fas fa-edit"></i></button>
+                                        </th>
                                     </tr>
                                     <% } %>
                                 </tbody>
@@ -302,6 +322,7 @@
                                         <th>Tamanho</th>
                                         <th>Observacao</th>
                                         <th>Total</th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -338,6 +359,7 @@
     <script src="pages/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="pages/assets/js/theme.js"></script>
+    <script src="pages/assets/js/pedido.js" type="text/javascript"></script>
 </body>
 
 </html>

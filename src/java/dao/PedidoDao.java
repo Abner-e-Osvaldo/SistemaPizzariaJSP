@@ -34,6 +34,23 @@ public class PedidoDao {
             e.printStackTrace();
         }
     }
+    
+    public void alterar(int idPedido, Pedido pedido){
+        try {
+            query = "UPDATE public.pedido SET id_cliente=?, pizza=?, tamanho=?, observacao=?, total=?, status=? WHERE id_pedido=" + idPedido;
+            statement = conexao.getConnection().prepareStatement(query);
+            statement.setInt(1, pedido.getIdCliente());
+            statement.setInt(2, pedido.getPizza());
+            statement.setInt(3, pedido.getTamanho());
+            statement.setString(4, pedido.getObservacao());
+            statement.setDouble(5, pedido.getTotal());
+            statement.setInt(6, pedido.getStatus());
+            
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<Pedido> listar(){
         
