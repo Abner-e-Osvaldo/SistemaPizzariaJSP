@@ -42,5 +42,38 @@ public class PizzaDao {
        }
    }
    
+   public ResultSet ListarPizza(){
+       query = "SELECT	id_pizza"
+                   + ",nome"
+                   +" , tamanho"
+                   +", descricao"
+                   +", valor"
+                   +", acrescimo_tamanho "
+               +"FROM pizza"
+                  +", tamanho "
+               +"where tamanho.id_tamanho = pizza.id_tamanho"
+               + " ORDER BY"
+               + " nome ASC;";
+       try{
+           statement = conexao.getConnection().prepareStatement(query);
+           resultSet = statement.executeQuery();
+           
+       }catch(SQLException e){
+           e.printStackTrace();
+       }
+       return resultSet;
+   }
+   
+   public void AtualizarPizza (Pizza pizza){
+        query ="UPDATE pizza SET id_tamanho = "+pizza.getIdTamanho()+", nome = '"+pizza.getNome()+"', descricao =  '"+pizza.getDescricao()+"', valor = "+pizza.getValorBase()+", acrescimo_tamanho = "+pizza.getAcrescimoTamanho()+" WHERE id_pizza ="+pizza.getIdPizza() +";";
+        try{
+        statement = conexao.getConnection().prepareStatement(query);
+        statement.executeUpdate();
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+   }
+   
     
 }

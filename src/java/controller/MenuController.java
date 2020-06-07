@@ -27,7 +27,7 @@ public class MenuController extends HttpServlet {
                 break;
                 
             case "table":
-                request.getRequestDispatcher("pages/table.html").forward(request, response);
+                request.getRequestDispatcher("pages/pizza.jsp").forward(request, response);
                 break;
             
         }
