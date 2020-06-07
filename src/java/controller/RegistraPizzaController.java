@@ -22,6 +22,12 @@ import model.Pizza;
 public class RegistraPizzaController extends HttpServlet {
     PizzaDao pizzadao;
     ResultSet rs;
+    String  nomePizza;
+    String  descricaoPizza;
+    int  tamanhoPizza;
+    double  valorPizza;
+    double  acrescimoPizza;
+    int idPizza;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,29 +43,35 @@ public class RegistraPizzaController extends HttpServlet {
          String opcao = request.getParameter("opcao");
          switch(opcao.trim()){
              case "create":
-                 String  nomePizza = request.getParameter("nomePizza").toString().trim();
-                 String  descricaoPizza = request.getParameter("descricaoPizza").toString().trim();
-                 int  tamanhoPizza = Integer.parseInt(request.getParameter("tamanhoPizza").toString().trim());
-                 double  valorPizza = Double.parseDouble(request.getParameter("valorPizza").toString().trim()); 
-                 double  acrescimoPizza = Double.parseDouble(request.getParameter("acrescimoPizza").toString().trim());
+                 nomePizza = request.getParameter("nomePizza").toString().trim();
+                 descricaoPizza = request.getParameter("descricaoPizza").toString().trim();
+                 tamanhoPizza = Integer.parseInt(request.getParameter("tamanhoPizza").toString().trim());
+                 valorPizza = Double.parseDouble(request.getParameter("valorPizza").toString().trim()); 
+                 acrescimoPizza = Double.parseDouble(request.getParameter("acrescimoPizza").toString().trim());
                  Pizza pizzaCreate = new Pizza(nomePizza,descricaoPizza,valorPizza,acrescimoPizza,tamanhoPizza);
                  pizzadao = new PizzaDao();
                  pizzadao.InsertPizza(pizzaCreate);
                  request.getRequestDispatcher("pages/pizza.jsp").forward(request, response);
                  break;
              case "update":
-                 String  nomePizzaEdit      = request.getParameter("nomePizzaEdit").toString().trim();
-                 String  descricaoPizzaEdit = request.getParameter("descricaoPizzaEdit").toString().trim();
-                 int     tamanhoPizzaEdit   = Integer.parseInt(request.getParameter("tamanhoPizzaEdit").toString().trim());
-                 double  valorPizzaEdit     = Double.parseDouble(request.getParameter("valorPizzaEdit").toString().trim()); 
-                 double  acrescimoPizzaEdit = Double.parseDouble(request.getParameter("acrescimoPizzaEdit").toString().trim());
-                 int     idPizza   = Integer.parseInt(request.getParameter("idPizza").toString().trim());
-                 Pizza pizzaUpdate = new Pizza(nomePizzaEdit,descricaoPizzaEdit,valorPizzaEdit,acrescimoPizzaEdit,tamanhoPizzaEdit);
-                 pizzaUpdate.setIdPizza(idPizza);
-                 pizzadao = new PizzaDao();
-                 pizzadao.AtualizarPizza(pizzaUpdate);
+                  nomePizza      = request.getParameter("nomePizzaEdit").toString().trim();
+                  descricaoPizza = request.getParameter("descricaoPizzaEdit").toString().trim();
+                  tamanhoPizza   = Integer.parseInt(request.getParameter("tamanhoPizzaEdit").toString().trim());
+                  valorPizza     = Double.parseDouble(request.getParameter("valorPizzaEdit").toString().trim()); 
+                  acrescimoPizza = Double.parseDouble(request.getParameter("acrescimoPizzaEdit").toString().trim());
+                  idPizza   = Integer.parseInt(request.getParameter("idPizza").toString().trim());
+                  Pizza pizzaUpdate = new Pizza(nomePizza,descricaoPizza,valorPizza,acrescimoPizza,tamanhoPizza);
+                  pizzaUpdate.setIdPizza(idPizza);
+                  pizzadao = new PizzaDao();
+                  pizzadao.AtualizarPizza(pizzaUpdate);
                  request.getRequestDispatcher("pages/pizza.jsp").forward(request, response);
-                 
+                 break;
+             case "delete":
+                 idPizza = Integer.parseInt(request.getParameter("idPizzaDelete").toString().trim());
+                 pizzadao = new PizzaDao();
+                 pizzadao.DeletarPizza(idPizza);
+                 request.getRequestDispatcher("pages/pizza.jsp").forward(request, response);
+                break;
          }  
         
     }

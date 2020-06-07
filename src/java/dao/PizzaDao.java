@@ -76,5 +76,15 @@ public class PizzaDao {
         }
    }
    
+   public void DeletarPizza( int idPizza){
+       query = "DELETE FROM pizza WHERE id_pizza = "+idPizza+";";
+       try{
+           statement = conexao.getConnection().prepareStatement(query);
+           statement.executeQuery();
+       }catch(SQLException e){
+           e.printStackTrace();
+       }
+   }
+   
     
 }

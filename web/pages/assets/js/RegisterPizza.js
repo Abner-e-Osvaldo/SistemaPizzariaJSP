@@ -8,7 +8,7 @@ $(document).ready(function(){
   var modal = $(this)
   
   modal.find('.modal-body input').val(recipient)
-})
+});
 
 
   $('#exampleModal2').on('show.bs.modal', function (event) {
@@ -48,9 +48,21 @@ $(document).ready(function(){
   
   // Button that triggered the modal
  
-})
+});
 
-    
+
+
+
+$('#exampleModal3').on('show.bs.modal', function (event) {
+      
+      
+   const button = $(event.relatedTarget);
+   const idPizza = button[0].parentElement.parentElement.getAttribute('value');
+    $("[name=idPizzaDelete]").val(idPizza);
+   const nomePizza = button[0].parentElement.parentElement.querySelectorAll('td')[0].innerText;
+   $('.msg-delete').html('<h5 class="msg-delete text-dark">Você tem certeza que deseja excluir a pizza '+nomePizza+' ? </h5>')
+   
+});
     
     
 });
