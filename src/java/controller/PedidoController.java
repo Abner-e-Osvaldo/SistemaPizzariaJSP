@@ -28,7 +28,9 @@ public class PedidoController extends HttpServlet {
         String total = request.getParameter("total");
         
         Pedido pedido = new Pedido();
-        pedido.setIdPedido(Integer.parseInt(idPedido));
+        if(idPedido != "") {
+            pedido.setIdPedido(Integer.parseInt(idPedido));
+        }
         pedido.setIdCliente(Integer.parseInt(idCliente));
         pedido.setStatus(Integer.parseInt(status));
         pedido.setPizza(Integer.parseInt(pizza));
@@ -44,14 +46,14 @@ public class PedidoController extends HttpServlet {
                     return;
                 
                 inserir(pedido);
-                request.setAttribute("listaPedido", listar());
+                //request.setAttribute("listaPedido", listar());
                 request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 
                 break;
                 
             case "alterar":
                 alterar(pedido);
-                request.setAttribute("listaPedido", listar());
+                //request.setAttribute("listaPedido", listar());
                 request.getRequestDispatcher("pages/pedido.jsp").forward(request, response);
                 break;
                 

@@ -224,7 +224,14 @@
                                                         <label for="pizza"><strong>Pizza</strong></label>
                                                         <select id="pizza" class="form-control" name="pizza">
                                                             <option value="">--SELECIONE--</option>
-                                                            <option value="34">Pepperoni</option>
+                                                            <option value="1">FRANGO</option>
+                                                            <option value="2">CALABRESA</option>
+                                                            <option value="3">CAMPONESA</option>
+                                                            <option value="4">MILHO VERDE</option>
+                                                            <option value="5">MORANGO COM CHOCOLATE</option>
+                                                            <option value="6">BANANA NEVADA</option>
+                                                            <option value="7">CHOCOLATE</option>
+                                                            <option value="8">CHOCOLATE SEM PIMENTA</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -233,11 +240,11 @@
                                                         <label for="tamanho"><strong>Tamanho</strong></label>
                                                         <select id="tamanho" class="form-control" name="tamanho">
                                                             <option value="">--SELECIONE--</option>
-                                                            <option value="1">BIG</option>
-                                                            <option value="2">GRANDE</option>
+                                                            <option value="5">BIG</option>
+                                                            <option value="4">GRANDE</option>
                                                             <option value="3">MÉDIA</option>
-                                                            <option value="4">PEQUENA</option>
-                                                            <option value="5">BROTO</option>
+                                                            <option value="2">PEQUENA</option>
+                                                            <option value="1">BROTO</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -302,9 +309,9 @@
                                     <tr>
                                         <td name="idPedido-list" value="<% out.print(pedido.getIdPedido()); %>"><% out.print(pedido.getIdPedido()); %></td>
                                         <td name="idCliente-list" value="<% out.print(pedido.getIdCliente()); %>"><% out.print(pedido.getIdCliente()); %></td>
-                                        <td name="status-list" value="<% out.print(pedido.getStatus()); %>"><% out.print(pedido.getStatus()); %></td>
-                                        <td name="pizza-list" value="<% out.print(pedido.getPizza()); %>"><% out.print(pedido.getPizza()); %></td>
-                                        <td name="tamanho-list" value="<% out.print(pedido.getTamanho()); %>"><% out.print(pedido.getTamanho()); %></td>
+                                        <td name="status-list" value="<% out.print(pedido.getStatus()); %>"><% out.print(pedido.getStatusTexto()); %></td>
+                                        <td name="pizza-list" value="<% out.print(pedido.getPizza()); %>"><% out.print(pedido.getPizzaTexto()); %></td>
+                                        <td name="tamanho-list" value="<% out.print(pedido.getTamanho()); %>"><% out.print(pedido.getTamanhoTexto()); %></td>
                                         <td name="observacao-list" value="<% out.print(pedido.getObservacao()); %>"><% out.print(pedido.getObservacao()); %></td>
                                         <td name="total-list" value="<% out.print(pedido.getTotal()); %>"><% out.print(pedido.getTotal()); %></td>
                                         <th>

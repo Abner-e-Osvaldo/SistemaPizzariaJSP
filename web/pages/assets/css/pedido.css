@@ -1,0 +1,9 @@
+#dataTable select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    border: none;
+    /*pointer-events: none;*/
+    color: #858796;
+}

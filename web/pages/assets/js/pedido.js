@@ -47,7 +47,11 @@ var pedido = {
   },
   
   calculaTotal: function() {
-      
+      let pizza = parseInt($("#pizza").val());
+      let tamanho = parseInt($("#tamanho").val());
+      let taxa = 13.72;
+      let total = pizza + tamanho + taxa;
+      $("#total").val(total);
   }
     
 };

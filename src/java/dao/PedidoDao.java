@@ -71,14 +71,17 @@ public class PedidoDao {
                 if(resultSet.getString("id_cliente") != null)
                     pedido.setIdCliente(Integer.parseInt(resultSet.getString("id_cliente")));
                 
-                if(resultSet.getString("status") != null)
+                if(resultSet.getString("status") != null){
                     pedido.setStatus(Integer.parseInt(resultSet.getString("status")));
+                }
                 
-                if(resultSet.getString("pizza") != null)
+                if(resultSet.getString("pizza") != null) {
                     pedido.setPizza(Integer.parseInt(resultSet.getString("pizza")));
+                }
                 
-                if(resultSet.getString("tamanho") != null)
+                if(resultSet.getString("tamanho") != null) {
                     pedido.setTamanho(Integer.parseInt(resultSet.getString("tamanho")));
+                }
                 
                 if(resultSet.getString("observacao") != null)
                     pedido.setObservacao(resultSet.getString("observacao"));
