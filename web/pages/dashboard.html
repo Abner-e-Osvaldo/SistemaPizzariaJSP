@@ -23,10 +23,10 @@
                 
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     
-                        <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
+                          <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
                         
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active " href="#" onClick="document.getElementById('formdashboard').submit();">
+                            <a class="nav-link " href="#" onClick="document.getElementById('formdashboard').submit();">
                                 <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
                         </li>
                     
@@ -37,8 +37,9 @@
                     </form>
                     
                      <form id="formtable" method="POST" action="MenuController?opcao=table" >
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
                     </form>
+                    
                     
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
