@@ -23,7 +23,7 @@ public class MenuController extends HttpServlet {
                 break;
             
             case "dashboard":
-                request.getRequestDispatcher("pages/dashboard.html").forward(request, response);
+                request.getRequestDispatcher("pages/dashboard.jsp").forward(request, response);
                 break;
                 
             case "table":
