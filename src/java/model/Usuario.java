@@ -3,26 +3,34 @@ package model;
 
 public class Usuario {
     
-    private String nome;
+    private String name;
+    private String lastname;
     private String senha;
-    private int idade;
     private String email;
     
     public Usuario() {} 
-    
-    public Usuario (String nome, String senha, int idade, String email){
-        this.nome = nome;
+
+    public Usuario(String name, String lastname, String senha, String email) {
+        this.name = name;
+        this.lastname = lastname;
         this.senha = senha;
-        this.idade = idade;
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getSenha() {
@@ -33,14 +41,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -48,4 +48,8 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
+    
+    
 }

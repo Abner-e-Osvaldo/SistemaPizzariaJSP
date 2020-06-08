@@ -13,24 +13,28 @@ import model.Usuario;
 
 public class CadastrarUsuarioController extends HttpServlet {
 
-    private Usuario u;
+    private Usuario user;
+    private UsuarioDAO daoUser;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nome = request.getParameter("tNome").toString().trim();
-        String senha = request.getParameter("tSenha").toString().trim();
-        int idade = Integer.parseInt(request.getParameter("tIdade").toString().trim());
-        String email = request.getParameter("tEmail").toString().trim();
-        
-        u = new Usuario(nome, senha, idade, email); 
+        String nome = request.getParameter("nome").toString().trim();
+        String sobrenome = request.getParameter("sobrenome").toString().trim();
+        String senha = request.getParameter("senha").toString().trim();
+        String senhaConfirm = request.getParameter("senhaConfirm").toString().trim();
+        String email = request.getParameter("email").toString().trim();
+        if(senha.equals(senhaConfirm)){
+            user = new Usuario(nome,sobrenome,senha,email);
+            daoUser = new UsuarioDAO();
+            daoUser.inserirUsuario(user);
+             request.getRequestDispatcher("index.html").forward(request, response);
+        }else{
+            request.getRequestDispatcher("register.html").forward(request, response);
+        }
        
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.inserirUsuario(u);
-        
-        request.getRequestDispatcher("index.html").forward(request, response);
-        
+       
         
     }
 

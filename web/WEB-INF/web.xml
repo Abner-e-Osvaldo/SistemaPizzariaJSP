@@ -17,10 +17,6 @@
         <servlet-class>controller.DeletarUsuarioController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditarUsuarioController</servlet-name>
-        <servlet-class>controller.EditarUsuarioController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.LoginController</servlet-class>
     </servlet>
@@ -47,10 +43,6 @@
     <servlet-mapping>
         <servlet-name>DeletarUsuarioController</servlet-name>
         <url-pattern>/DeletarUsuarioController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditarUsuarioController</servlet-name>
-        <url-pattern>/EditarUsuarioController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>

@@ -19,8 +19,8 @@ public class UsuarioDAO {
 
     public void inserirUsuario(Usuario usuario){
         try {
-            query = "INSERT INTO usuario(nome,email,senha,idade) VALUES (" +"'"+ usuario.getNome() + "'," + "'"+ usuario.getEmail() + "',"
-                    + "'"+ usuario.getSenha() + "'," + usuario.getIdade() + ")";
+            query = "INSERT INTO usuario(nome,sobrenome,email,senha) VALUES (" +"'"+ usuario.getName() + "'," + "'"+ usuario.getLastname() + "',"
+                    + "'"+ usuario.getEmail() + "'," + usuario.getSenha()+ ")";
 
             statement = conexao.getConnection().prepareStatement(query);
             statement.executeUpdate();
@@ -29,44 +29,22 @@ public class UsuarioDAO {
         }
     }
 
-    public ResultSet listarUsuario(){
+    public ResultSet listarUsuario(Usuario user ){
         try {
-            query = "SELECT * FROM usuario";
+            query = "SELECT * FROM usuario WHERE email= '"+user.getEmail()+"' AND senha='"+user.getSenha()+"';";
             statement = conexao.getConnection().prepareStatement(query);
             statement.executeQuery();
             resultSet = statement.executeQuery();
+            
+            
         } catch (SQLException e) {
             e.printStackTrace();
+            
         }
 
         return resultSet;
     }
     
-    public void editarUsuario(int id, Usuario u){
-        try{
-            query = "UPDATE usuario SET nome='" + u.getNome() + "', email='" + u.getEmail() + "' " +
-                        "WHERE id = " + id;
-        
-            statement = conexao.getConnection().prepareStatement(query);
-            statement.executeUpdate();
-        }
-        catch(SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    public void deletarUsuario(int id){
-        try{
-            query = "DELETE FROM usuario WHERE id = " + id;
-        
-            statement = conexao.getConnection().prepareStatement(query);
-            statement.executeUpdate();
-        }
-        catch(SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
    
 }
