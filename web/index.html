@@ -25,7 +25,7 @@
                                     <div class="text-center">
                                        <i class="fas fa-hat-wizard text-info"></i> <h4 class="text-dark mb-4"> PIZZA MÁGICA</h4>
                                     </div>
-                                    <form class="user" method="POST" action="LoginController" >
+                                    <form class="user" method="POST" action="LoginController?opcao=login" >
                                         <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
                                         <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
                                         <div class="form-group">
@@ -36,7 +36,7 @@
                                         <hr>
                                     </form>
                                     
-                                    <form method="POST" action="CadastroController">
+                                    <form method="POST" action="LoginController?opcao=cadastro">
                                        
                                     <div class="text-center"> <button class="btn btn-dark btn-block text-white btn-user" type="submit">Cadastrar</button></div>
                                     <br>
