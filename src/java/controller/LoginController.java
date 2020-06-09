@@ -49,7 +49,7 @@ public class LoginController extends HttpServlet {
                     
                 if(rs.next()){
                     if(rs.getString("email").equals(login) && rs.getString("senha").equals(senha)){
-                        session.setAttribute("id","123");
+                        session.setAttribute("user",rs.getString("nome"));
                         request.getRequestDispatcher("pages/dashboard.jsp").forward(request, response);                         
                     }
                 }else{

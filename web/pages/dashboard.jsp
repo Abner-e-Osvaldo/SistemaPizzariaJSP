@@ -1,12 +1,11 @@
 <%@page import="controller.PedidoController"%>
 <!DOCTYPE html>
-<html>
-
-<head>
+<html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard - Brand</title>
     <link rel="stylesheet" href="pages/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pages/assets/css/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="pages/assets/fonts/fontawesome-all.min.css">
 </head>
@@ -24,21 +23,21 @@
                 
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     
-                     <form  id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
+                     <form id="formdashboard" method="POST" action="MenuController?opcao=dashboard"> 
                         
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" href="#" onClick="document.getElementById('formdashboard').submit();">
+                            <a class="nav-link active" href="#" onclick="document.getElementById('formdashboard').submit();">
                                 <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
                         </li>
                     
                     </form>
                     
                     <form id="formprofile" method="POST" action="MenuController?opcao=pedido">
-                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formprofile').submit();" ><i class="fas fa-caravan"></i><span>Pedidos</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onclick="document.getElementById('formprofile').submit();"><i class="fas fa-caravan"></i><span>Pedidos</span></a></li>
                     </form>
                     
-                     <form id="formtable" method="POST" action="MenuController?opcao=table" >
-                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onClick="document.getElementById('formtable').submit();" ><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
+                     <form id="formtable" method="POST" action="MenuController?opcao=table">
+                        <li class="nav-item" role="presentation"><a class="nav-link " href="#" onclick="document.getElementById('formtable').submit();"><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
                     </form>
                     
                     
@@ -51,8 +50,8 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            <div class="input-group">
+                                <div class="input-group-append"></div>
                             </div>
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -66,9 +65,8 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
-                                        role="menu">
+                                <div class="nav-item dropdown no-arrow">
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
                                         <h6 class="dropdown-header">alerts center</h6>
                                         <a class="d-flex align-items-center dropdown-item" href="#">
                                             <div class="mr-3">
@@ -97,9 +95,8 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
-                                        role="menu">
+                                <div class="nav-item dropdown no-arrow">
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
                                         <h6 class="dropdown-header">alerts center</h6>
                                         <a class="d-flex align-items-center dropdown-item" href="#">
                                             <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
@@ -142,11 +139,10 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Administrador</span>
-                                    <div
-                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <aclass="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="user d-none d-lg-inline mr-2 text-gray-600 small">Abner</span>
+                                    </a><div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"></a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <aclass="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></aclass="dropdown-item"></div>
                     </div>
                     </li>
                     </ul>
@@ -163,12 +159,7 @@
                                         <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Lucro</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0">
                                             <span>
-                                                $<%
-                                                    PedidoController pedidoController = new PedidoController();
-                                                    Double lucroTotal = pedidoController.lucroTotal();
-                                                    out.print(lucroTotal);
-                                                    
-                                                    %>
+                                                $306.03999999999996
                                             </span>
                                         </div>
                                     </div>
@@ -185,7 +176,7 @@
                                         <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Em andamento</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0">
                                             <span>
-                                                $<% out.print(pedidoController.lucroEstimado()); %>
+                                                $0.0
                                             </span>
                                         </div>
                                     </div>
@@ -202,7 +193,7 @@
                                         <div class="text-uppercase text-danger font-weight-bold text-xs mb-1"><span>Prejuízo</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0">
                                             <span>
-                                                $<% out.print(pedidoController.prejuizoTotal()); %>
+                                                $0.0
                                             </span>
                                         </div>
                                     </div>
@@ -219,7 +210,7 @@
                             <div class="card text-white bg-success shadow">
                                 <div class="card-body">
                                     <p class="m-0">Pedidos realizados com sucesso</p>
-                                    <p class="text-white m-0"><% out.print(pedidoController.realizadosComSucesso()); %></p>
+                                    <p class="text-white m-0">7</p>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +218,7 @@
                             <div class="card text-white bg-warning shadow">
                                 <div class="card-body">
                                     <p class="m-0">Pedidos em andamento</p>
-                                    <p class="text-white m-0"><% out.print(pedidoController.emAndamento()); %></p>
+                                    <p class="text-white m-0">0</p>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +226,7 @@
                             <div class="card text-white bg-danger shadow">
                                 <div class="card-body">
                                     <p class="m-0">Pedidos cancelados</p>
-                                    <p class="text-white m-0"><% out.print(pedidoController.cancelados()); %></p>
+                                    <p class="text-white m-0">0</p>
                                 </div>
                             </div>
                         </div>
@@ -256,6 +247,6 @@
     <script src="pages/assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="pages/assets/js/theme.js"></script>
-</body>
 
-</html>
+
+</body></html>
