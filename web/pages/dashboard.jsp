@@ -40,7 +40,10 @@
                         <li class="nav-item" role="presentation"><a class="nav-link " href="#" onclick="document.getElementById('formtable').submit();"><i class="fas fa-plus-circle"></i><span>Cadastro Pizza</span></a></li>
                     </form>
                     
-                    
+                    <form id="formexit" method="POST" action="MenuController?opcao=exit" >
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" onClick="document.getElementById('formexit').submit();" ><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+                    </form>
+                                     
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -237,7 +240,7 @@
     </div>
     <footer class="bg-white sticky-footer">
         <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
+            <div class="text-center my-auto copyright"><span>Copyright © Abner&Osvaldo 2020</span></div>
         </div>
     </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>

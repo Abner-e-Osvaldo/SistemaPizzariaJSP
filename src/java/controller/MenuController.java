@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class MenuController extends HttpServlet {
@@ -29,6 +30,11 @@ public class MenuController extends HttpServlet {
             case "table":
                 request.getRequestDispatcher("pages/pizza.jsp").forward(request, response);
                 break;
+            case "exit":
+                 HttpSession session = request.getSession();
+                 session.invalidate(); 
+                 request.getRequestDispatcher("index.html").forward(request, response);
+                 break;
             
         }
     }
