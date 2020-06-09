@@ -1,3 +1,5 @@
+<%@page import="model.Pizza"%>
+<%@page import="controller.RegistraPizzaController"%>
 <%@page import="controller.PedidoController"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Pedido"%>
@@ -227,14 +229,13 @@
                                                         <label for="pizza"><strong>Pizza</strong></label>
                                                         <select id="pizza" class="form-control" name="pizza" required>
                                                             <option value="">--SELECIONE--</option>
-                                                            <option value="1">FRANGO</option>
-                                                            <option value="2">CALABRESA</option>
-                                                            <option value="3">CAMPONESA</option>
-                                                            <option value="4">MILHO VERDE</option>
-                                                            <option value="5">MORANGO COM CHOCOLATE</option>
-                                                            <option value="6">BANANA NEVADA</option>
-                                                            <option value="7">CHOCOLATE</option>
-                                                            <option value="8">CHOCOLATE SEM PIMENTA</option>
+                                                            <%
+                                                                RegistraPizzaController pizzaController = new RegistraPizzaController();
+                                                                ResultSet rs = pizzaController.ListarPizza();
+                                                                
+                                                                while(rs.next()) { %>
+                                                            <option value="<% out.print(rs.getString("id_pizza")); %>"><% out.print(rs.getString("nome")); %></option>
+                                                            <% } %>
                                                         </select>
                                                     </div>
                                                 </div>
