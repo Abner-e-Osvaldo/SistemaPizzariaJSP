@@ -16,13 +16,13 @@ import model.Pizza;
  */
 public class PizzaDao {
     
-   Conexao conexao = new Conexao();
+   Conexao conexao;
    private PreparedStatement statement;
    private ResultSet resultSet;
    private String query;
    
    public PizzaDao(){
-       
+       conexao = Conexao.getInstance();
     }  
    
    

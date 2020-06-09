@@ -9,13 +9,13 @@ import model.Pedido;
 
 public class PedidoDao {
     
-    private Conexao conexao =  new Conexao();
+    private Conexao conexao;
     private String query;
     private PreparedStatement statement;
     private ResultSet resultSet;
     
     public PedidoDao() {
-        conexao = new Conexao();
+        conexao = Conexao.getInstance();
     }
     
     public void inserir(Pedido pedido){

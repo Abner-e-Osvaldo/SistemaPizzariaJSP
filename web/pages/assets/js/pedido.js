@@ -6,11 +6,19 @@ var pedido = {
       $("#formpedido").attr('action', ''); 
       
       $("#btn-inserir").on('click', function() {
+          if(!pedido.validaCampos()) {
+             alert("Todos os campos devem ser preenchidos");
+             return;
+         }
           $("#formpedido").attr('action', 'PedidoController?opcao=inserir');
           $("#formpedido").submit();
       });
       
       $("#btn-atualizar").on('click', function() {
+         if(!pedido.validaCampos()) {
+             alert("Todos os campos devem ser preenchidos");
+             return;
+         }
          $("#formpedido").attr('action', 'PedidoController?opcao=alterar'); 
          $("#formpedido").submit();
       });
@@ -52,6 +60,31 @@ var pedido = {
       let taxa = 13.72;
       let total = pizza + tamanho + taxa;
       $("#total").val(total);
+  },
+  
+  validaCampos: function() {
+      
+      let camposValidados = true;
+      
+      if($("#idCliente").val() == "")
+          camposValidados = false;
+      
+      if($("#status").val() == "")
+          camposValidados = false;
+      
+      if($("#pizza").val() == "")
+          camposValidados = false;
+      
+      if($("#tamanho").val() == "")
+          camposValidados = false;
+      
+      if($("#observacao").val() == "") 
+          camposValidados = false;
+      
+      if($("#total").val() == "")
+          camposValidados = false;
+      
+      return camposValidados;
   }
     
 };
