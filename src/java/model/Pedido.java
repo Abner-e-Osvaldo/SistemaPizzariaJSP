@@ -40,30 +40,6 @@ public class Pedido {
 
     public void setPizza(int pizza) {
         this.pizza = pizza;
-        
-        if(pizza == 1) 
-            setPizzaTexto("FRANGO");
-        
-        if(pizza == 2) 
-            setPizzaTexto("CALABRESA");
-        
-        if(pizza == 3) 
-            setPizzaTexto("CAMPONESA");
-        
-        if(pizza == 4) 
-            setPizzaTexto("MILHO VERDE");
-        
-        if(pizza == 5) 
-            setPizzaTexto("MORANGO COM CHOCOLATE");
-        
-        if(pizza == 6) 
-            setPizzaTexto("BANANA NEVADA");
-        
-        if(pizza == 7) 
-            setPizzaTexto("CHOCOLATE");
-        
-        if(pizza == 8) 
-            setPizzaTexto("CHOCOLATE SEM PIMENTA");
     }
 
     public int getTamanho() {

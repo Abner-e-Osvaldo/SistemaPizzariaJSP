@@ -57,7 +57,7 @@ public class PedidoDao {
         ArrayList<Pedido> listaPedido = new ArrayList<>();
         
         try {
-            query = "SELECT * FROM pedido";
+            query = "select * from pedido inner join pizza on id_pizza = pizza;";
             statement = conexao.getConnection().prepareStatement(query);
             statement.executeQuery();
             resultSet = statement.executeQuery();
@@ -77,6 +77,10 @@ public class PedidoDao {
                 
                 if(resultSet.getString("pizza") != null) {
                     pedido.setPizza(Integer.parseInt(resultSet.getString("pizza")));
+                }
+                
+                if(resultSet.getString("nome") != null) {
+                    pedido.setPizzaTexto(resultSet.getString("nome"));
                 }
                 
                 if(resultSet.getString("tamanho") != null) {
