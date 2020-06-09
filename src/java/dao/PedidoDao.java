@@ -57,7 +57,7 @@ public class PedidoDao {
         ArrayList<Pedido> listaPedido = new ArrayList<>();
         
         try {
-            query = "select * from pedido inner join pizza on id_pizza = pizza;";
+            query = "select * from pedido inner join pizza on id_pizza = pizza order by status;";
             statement = conexao.getConnection().prepareStatement(query);
             statement.executeQuery();
             resultSet = statement.executeQuery();
