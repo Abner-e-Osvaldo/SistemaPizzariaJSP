@@ -14,6 +14,9 @@ public class Pedido {
     String pizzaTexto;
     String tamanhoTexto;
     String statusTexto;
+    
+    double totalValue;
+    int totalCount;
 
     public int getIdPedido() {
         return idPedido;
@@ -142,7 +145,21 @@ public class Pedido {
     public void setStatusTexto(String statusTexto) {
         this.statusTexto = statusTexto;
     }
-    
-    
+
+    public double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
 
 }

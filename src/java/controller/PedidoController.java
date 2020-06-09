@@ -12,6 +12,7 @@ import model.Pedido;
 import dao.PedidoDao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PedidoController extends HttpServlet {
 
@@ -180,5 +181,5 @@ public class PedidoController extends HttpServlet {
         
         return listaPedido.size();
     }
-    
+         
 }

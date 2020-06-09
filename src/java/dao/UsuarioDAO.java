@@ -14,7 +14,7 @@ public class UsuarioDAO {
     private ResultSet resultSet;
 
     public UsuarioDAO() {
-        conexao = new Conexao();
+        conexao = Conexao.getInstance();
     }
 
     public void inserirUsuario(Usuario usuario){

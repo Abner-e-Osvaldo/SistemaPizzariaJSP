@@ -145,7 +145,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Administrador
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <a
@@ -206,13 +206,13 @@
                                                             <input id="idPedido" name="idPedido" class="form-control" type="text" style="visibility: hidden; position: fixed">
                                                             <strong>Cod. Cliente</strong>
                                                         </label>
-                                                        <input id="idCliente" class="form-control" type="text" placeholder="(99) 9999-9999" name="idCliente">
+                                                        <input id="idCliente" class="form-control" type="tel" placeholder="(99) 9999-9999" name="idCliente" maxlength="6" required>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="status"><strong>Status</strong></label>
-                                                        <select id="status" class="form-control" name="status">
+                                                        <select id="status" class="form-control" name="status" required>
                                                             <option value="">--SELECIONE--</option>
                                                             <option value="1">EM ATENDIMENTO</option>
                                                             <option value="2">CANCELADO</option>
@@ -225,7 +225,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="pizza"><strong>Pizza</strong></label>
-                                                        <select id="pizza" class="form-control" name="pizza">
+                                                        <select id="pizza" class="form-control" name="pizza" required>
                                                             <option value="">--SELECIONE--</option>
                                                             <option value="1">FRANGO</option>
                                                             <option value="2">CALABRESA</option>
@@ -241,7 +241,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tamanho"><strong>Tamanho</strong></label>
-                                                        <select id="tamanho" class="form-control" name="tamanho">
+                                                        <select id="tamanho" class="form-control" name="tamanho" required>
                                                             <option value="">--SELECIONE--</option>
                                                             <option value="5">BIG</option>
                                                             <option value="4">GRANDE</option>
@@ -256,13 +256,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="observacao"><strong>Observação</strong></label>
-                                                        <input id="observacao" class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao">
+                                                        <input id="observacao" class="form-control" type="text" placeholder="Ex: sem queijo" name="observacao" required>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="last_name"><strong>Total</strong></label>
-                                                        <input id="total" value="0.00" readonly="true" class="form-control" type="text" placeholder="R$" name="total">
+                                                        <input id="total" value="0.00" readonly="true" class="form-control" type="text" placeholder="R$" name="total" required>
                                                     </div>
                                                 </div>
                                             </div>
