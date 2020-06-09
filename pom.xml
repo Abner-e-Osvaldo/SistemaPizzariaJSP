@@ -1,0 +1,7 @@
+<repositories>
+    <repository>
+        <id>local-libs-dir</id>
+        <name>locallib</name>
+        <url>file:${project.basedir}/libs</url>
+    </repository>
+</repositories>
