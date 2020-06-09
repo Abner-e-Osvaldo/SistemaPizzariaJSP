@@ -150,7 +150,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="user d-none d-lg-inline mr-2 text-gray-600 small">Abner</span>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="user d-none d-lg-inline mr-2 text-gray-600 small">${sessionScope.user } <i class="fas fa-user text-info"></i></span>
                                     </a><div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"></a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <aclass="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log
                                             <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></aclass="dropdown-item"></div>
@@ -196,8 +196,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="card shadow mb-3">
-                                    <div class="card-header py-3">
-                                        <p class="text-primary m-0 font-weight-bold">Pedido</p>
+                                    <div class="card-header py-3 bg-info">
+                                        <p class="text-white m-0 font-weight-bold">Pedido</p>
                                     </div>
                                     <div class="card-body">
                                         <form id="formpedido" method="POST" action="">
