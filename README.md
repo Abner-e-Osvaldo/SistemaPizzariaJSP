@@ -1,6 +1,6 @@
 # SistemaPizzariaJSP
 Sistema de Pizzaria em JSP - Projeto da disciplina de Multicamadas - PUCPR - Sistemas de Informação
-# Foi desenvolvido em JSP, Bootstrap e PostGress, usando design patterns MVC e Singleton.
+<h6> Foi desenvolvido em JSP, Bootstrap e PostGress, usando design patterns MVC e Singleton. </h6>
 
 # LOGIN
 
